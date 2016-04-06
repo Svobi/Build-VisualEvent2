@@ -1,5 +1,5 @@
 # Build-VisualEvent2
-## To Build VisualEvents2 with npm do this:
+## To Build VisualEvents2 (https://github.com/DataTables/VisualEvent) with npm do this:
 
 You need to have installed 
 #### * nodejs . https://nodejs.org
