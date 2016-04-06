@@ -40,3 +40,9 @@ If you used the webserverSubdir argument, copy the created subdirectory out of t
 Open www.yourwebserverurl.com/webserverSubdir/bookmarklet.html and you can move the link to your bookmarks.
 
 DONE!
+
+Thx to Allan
+
+Resources :
+http://sprymedia.co.uk/article/Visual+Event+2
+https://github.com/DataTables/VisualEvent
