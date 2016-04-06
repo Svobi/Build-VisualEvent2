@@ -4,7 +4,7 @@
   "description": "Build VisualEvent2 with npm",
   "main": "",
   "scripts": {
-    "init": "git clone https://github.com/DataTables/VisualEvent.git",
+    "init": "git clone https://github.com/DataTables/VisualEvent.git"
   },
   "author": "",
   "license": "MIT",
