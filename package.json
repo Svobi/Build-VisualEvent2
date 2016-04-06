@@ -1,0 +1,20 @@
+{
+  "name": "Build-VisualEvent2",
+  "version": "1.0.0",
+  "description": "Build VisualEvent2 with npm",
+  "main": "",
+  "scripts": {
+    "init": "git clone https://github.com/DataTables/VisualEvent.git",
+    "build": "grunt default"
+  },
+  "author": "Sven Hubert",
+  "license": "MIT",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-concat": "^1.0.0",
+    "grunt-contrib-uglify": "^1.0.1",
+    "grunt-jsdoc": "^1.1.0",
+    "grunt-regex-replace": "^0.2.9"
+  }
+
+}
