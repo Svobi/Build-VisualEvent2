@@ -1,13 +1,33 @@
 module.exports = function(grunt) {
+    var buildDir = 'build/';
 
-    var YOURWEBSITE = 'www.YOURDOMAIN.com';
-    var subDir = ''; // For subdirectory on your server
-
-    var buildDir = 'build/'+subDir;
-    if (subDir=='') {
-        // for plainbuild
-        buildDir = 'build/plain/';
+    var tasks = grunt.option('tasks');
+    if (tasks!=undefined&&(tasks.length>0)) {
+        var config_webserver_url = 'www.yourserver.com';
+        var config_webserver_subdir = '';
+    }else{
+        var config_webserver_url = grunt.option('webserverUrl');
+        var config_webserver_subdir = grunt.option('webserverSubdir');
     }
+
+    if (config_webserver_url==undefined) {
+        var error = 'Pls, be sure to set the argument webserverUrl:'+"\n";
+        error += 'grunt default --webserverUrl="www.yourwebserverurl.com"'+"\n";
+        grunt.fail.warn(error);
+    }
+
+    if (config_webserver_subdir==undefined) {
+        var subDir = '';
+        buildDir = 'build/plain/';
+    }else{
+        var subDir = config_webserver_subdir;
+        subDir = subDir + '/';
+        buildDir = buildDir + subDir;
+    }
+
+    console.log(config_webserver_url);
+    console.log(buildDir);
+
     grunt.initConfig({
         jsdoc : {
             build : {
@@ -90,10 +110,17 @@ module.exports = function(grunt) {
                     {
                         name: 'Website Change',
                         search: '//www.sprymedia.co.uk/VisualEvent/VisualEvent_Loader.js',
-                        replace: '//' + YOURWEBSITE + '/' + subDir + 'VisualEvent_Loader.js',
+                        replace: '//' +config_webserver_url + '/' + subDir + 'VisualEvent_Loader.js',
                         flags: 'g'
 
                     }
+                ]
+            }
+        },
+        clean: {
+            build: {
+                src: [
+                    buildDir
                 ]
             }
         }
@@ -103,8 +130,10 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-regex-replace');
+    grunt.loadNpmTasks('grunt-contrib-clean');
 
     grunt.registerTask('default', [
+        'clean:build',
         'concat:buildjs1',
         'regex-replace:buildjs',
         'concat:buildjs2',
